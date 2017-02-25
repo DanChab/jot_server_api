@@ -17,3 +17,11 @@ app.use(passport.initialize());
 
 // [SH] Use the API routes when path starts with /api
 app.use('/api', routesApi);
+
+// [SH] Catch unauthorised errors
+app.use(function(err, req, res, next){
+    if(err.name === 'UnauthorizedError'){
+        res.status(401);
+        res.json({"message": err.name + ": " + err.message});
+    }
+});
