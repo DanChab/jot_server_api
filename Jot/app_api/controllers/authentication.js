@@ -37,7 +37,7 @@ user.save(function(err){
 });
 };
 
-module.exports.login = function(reg, res){
+module.exports.login = function(req, res){
     if(!req.body.email || !req.body.password){
         sendJSONresponse(res, 400, {"message":"All fields required"
     });
